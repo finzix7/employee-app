@@ -22,8 +22,9 @@ app.use(express.json());
 app.use('/api/auth', require('./routes/auth'));
 app.use('/api/events', require('./routes/events'));
 
-
-//TODO: CRUD: Eventos
+app.get('*', (req, res) => {
+    ResizeObserverSize.sendFile(__dirname + '/public/index.html');
+});
 
 //escuhcar peticiones
 app.listen(port = process.env.PORT, () => {
