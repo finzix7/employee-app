@@ -55,14 +55,14 @@ const actualizarEvento = async (req, res = response) => {
         const evento = await Evento.findById(eventoId);
 
         if (!evento) {
-            res.status(404).json({
+            return res.status(404).json({
                 ok: false,
                 msg: 'No existe evento por ID',
             });
         }
 
         if (evento.user.toString() !== uid) {
-            res.status(401).json({
+            return res.status(401).json({
                 ok: false,
                 msg: 'No tiene privilegios para editar este evento',
             });
