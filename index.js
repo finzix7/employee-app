@@ -1,5 +1,5 @@
 const express = require('express');
-const { dbConnection } = require('./databases/confiig');
+const { dbConnection } = require('./databases/config');
 const cors = require('cors');
 require('dotenv').config();
 
@@ -20,11 +20,7 @@ app.use(express.json());
 
 //Rutas
 app.use('/api/auth', require('./routes/auth'));
-app.use('/api/events', require('./routes/events'));
-
-app.get('*', (req, res) => {
-    res.sendFile(__dirname + '/public/index.html');
-});
+app.use('/api/colaboradores', require('./routes/colaboradores'));
 
 //escuhcar peticiones
 app.listen(port = process.env.PORT, () => {
