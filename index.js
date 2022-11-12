@@ -22,6 +22,11 @@ app.use(express.json());
 app.use('/api/auth', require('./routes/auth'));
 app.use('/api/colaboradores', require('./routes/colaboradores'));
 
+//Coreccion de ruta
+app.get('*', (req, res) => {
+    res.sendFile(__dirname + '/public/index.html');
+});
+
 //escuhcar peticiones
 app.listen(port = process.env.PORT, () => {
     console.log(`Servidor corriendo en puerto ${port}`);
